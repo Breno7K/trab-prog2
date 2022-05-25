@@ -25,6 +25,7 @@ void troca(capivara *a, capivara *b)
 }
 
 /*funçao para ordenar por ultapassagem*/
+
 void cap_sort(capivara v[], int p, int r)
 {
     int i = p;
@@ -59,6 +60,20 @@ void cap_sort(capivara v[], int p, int r)
 }
 
 
+/*funçao para imprimir numero da capivara*/
+void imprimir_cap(capivara v[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("%d", v[i].numero);
+        if (i < n - 1)
+        {
+            printf(" ");
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     int n, x, i;
@@ -67,7 +82,8 @@ int main(int argc, char const *argv[])
     /*numero de capivaras*/
     scanf("%d", &n);
 
-    /* definindo numero das capivaras e zero para as ultrapassagens*/
+    /*definindo numero das capivaras e zero para as ultrapassagens*/
+    /*evitando problemas com endereço de memória de variaveis vazias e padronizando capivaras*/
     for (i = 0; i < n; i++)
     {
         capivaras[i].numero = i + 1;
@@ -92,20 +108,14 @@ int main(int argc, char const *argv[])
     }
 
     /*primeira saida*/
-    for (i = 0; i < n; i++)
-    {
-        printf("%d ", capivaras[i].numero);
-    }
-
+    imprimir_cap(capivaras, n);
     printf("\n");
 
+    /*ordenando*/
     cap_sort(capivaras, 0, n);
 
     /*segunda saida*/
-    for (i = 0; i < n; i++)
-    {
-        printf("%d ", capivaras[i].numero);
-    }
+    imprimir_cap(capivaras, n);
 
     return 0;
 }
